@@ -23,5 +23,4 @@ connection.once('open', async () => {
      console.log('Data seeded');
      process.exit(0);
      
-
 });
