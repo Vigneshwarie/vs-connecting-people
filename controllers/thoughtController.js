@@ -12,7 +12,7 @@ module.exports = {
           }
      },
      // block to get all thoughts
-     async getAllThought(req, res) {    
+     async getAllThoughts(req, res) {    
           try {
                const thoughtData = await Thought.find();
                res.json(thoughtData);
