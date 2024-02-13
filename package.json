@@ -4,7 +4,9 @@
   "description": "vs-connecting-people is an API for a social networking application that allows users to create a friend list and share their thoughts and reactions to their friend's posts.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node server.js",
+    "seed": "node utils/seed"
   },
   "keywords": [],
   "author": "",

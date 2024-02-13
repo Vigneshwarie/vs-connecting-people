@@ -26,7 +26,7 @@ const reactionSchema = new mongoose.Schema(
           },
      }
 );
-
+               
 const thoughtSchema = new Schema(
      {
           thoughtText: {
