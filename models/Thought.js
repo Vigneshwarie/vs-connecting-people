@@ -1,4 +1,4 @@
-const { Schema, model, default: mongoose } = require('mongoose');
+const { Schema, model, default: mongoose, Types } = require('mongoose');
 
 const reactionSchema = new mongoose.Schema(
      {
@@ -22,8 +22,9 @@ const reactionSchema = new mongoose.Schema(
      },
      {
           toJSON: {
-               getters: true
+               getters: true,
           },
+          id: false,
      }
 );
                
@@ -47,9 +48,9 @@ const thoughtSchema = new Schema(
      },
      {
           toJSON: {
-               virtuals: true
+               virtuals: true,
           },
-          id: false
+          id: false,
      }
 );
 

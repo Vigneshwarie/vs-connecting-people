@@ -5,7 +5,7 @@ module.exports = {
      async getAllThoughts(req, res) {    
           try {
                const thoughtData = await Thought.find();
-               res.json(thoughtData);
+               res.status(200).json(thoughtData);
           } catch (err) {
                console.log(err);
                res.status(500).json(err);
@@ -19,7 +19,7 @@ module.exports = {
                     res.status(404).json({ message: 'No thought found with this id!' });
                     return;
                }
-               res.json(thoughtData);
+               res.status(200).json(thoughtData);
           } catch (err) {
                console.log(err);
                res.status(500).json(err);
@@ -29,7 +29,25 @@ module.exports = {
      async createThought(req, res) {
           try {
                const thoughtData = await Thought.create(req.body);
-               res.json(thoughtData);
+               res.status(200).json(thoughtData);
+          } catch (err) {
+               console.log(err);
+               res.status(500).json(err);
+          }
+     },
+     // code block to update a thought by id for new reaction
+     async updateThoughtById(req, res) {
+          try {
+               const thoughtData = await Thought.findOneAndUpdate(
+                    { _id: req.params.id },
+                    { $addToSet: { reactions: req.body } },
+                    { runValidators: true, new: true }
+               );
+               if (!thoughtData) {
+                    return res.status(404).json({ message: 'No thought found with this id!' });
+               }
+               res.status(200).json(thoughtData);
+               
           } catch (err) {
                console.log(err);
                res.status(500).json(err);
