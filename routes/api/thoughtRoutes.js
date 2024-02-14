@@ -1,9 +1,11 @@
 const router = require('express').Router();
 
 // Importing all the method from the thoughtController
-const { getAllThoughts } = require('../../controllers/thoughtController');
+const { getAllThoughts, getThoughtById } = require('../../controllers/thoughtController');
 
 // Referred this part from the class activity mini project
 router.route('/').get(getAllThoughts);
+// This route is to get a single thought by id
+router.route('/:id').get(getThoughtById);
 
 module.exports = router;
