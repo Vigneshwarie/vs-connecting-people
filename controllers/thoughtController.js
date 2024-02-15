@@ -11,6 +11,7 @@ module.exports = {
                res.status(500).json(err);
           }
      },
+
      // block to get a single thought by id
      async getThoughtById(req, res) {
           try {
@@ -25,6 +26,7 @@ module.exports = {
                res.status(500).json(err);
           }
      },
+
      // block to create a new thought
      async createThought(req, res) {
           try {
@@ -35,6 +37,7 @@ module.exports = {
                res.status(500).json(err);
           }
      },
+
      // code block to update a thought by id for new reaction
      async updateThoughtById(req, res) {
           try {
@@ -53,6 +56,7 @@ module.exports = {
                res.status(500).json(err);
           }
      },
+
      // Code to delete a thought by Id
      async deleteThoughtById(req, res) {
           try {
@@ -60,8 +64,7 @@ module.exports = {
 
                if (!thoughtData) {
                     return res.status(404).json({ message: 'No thought found with this id!' });
-               }  
-               
+               }              
                res.status(200).json({ message: 'Thought deleted successfully!' });
           } catch (err) {
                console.log(err);
