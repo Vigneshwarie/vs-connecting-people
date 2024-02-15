@@ -5,7 +5,7 @@ module.exports = {
      async getAllUsers(req, res) {
           try {
                const userData = await User.find();
-               res.json(userData);
+               res.status(200).json(userData);
           } catch (err) {
                console.log(err);
                res.status(500).json(err);
@@ -19,7 +19,17 @@ module.exports = {
                     res.status(404).json({ message: 'No user found with this id!' });
                     return;
                }
-               res.json(userData);
+               res.status(200).json(userData);
+          } catch (err) {
+               console.log(err);
+               res.status(500).json(err);
+          }
+     },
+     // Code block to create new user
+     async createUser(req, res) {
+          try {
+               const userData = await User.create(req.body);
+               res.status(200).json(userData); 
           } catch (err) {
                console.log(err);
                res.status(500).json(err);
