@@ -34,5 +34,24 @@ module.exports = {
                console.log(err);
                res.status(500).json(err);
           }
+     },
+     // Code to update user
+     async updateUserById(req, res) {
+          try {
+               const userData = await User.findByIdAndUpdate(
+                    { _id: req.params.id },
+                    { $set: req.body },
+                    { runValidators: true, new: true }
+               );
+
+               if (!userData) {
+                    return res.status(404).json({ message: 'No user found with this id!' });
+               }
+               res.status(200).json(userData);
+
+          } catch (err) {
+               console.log(err);
+               res.status(500).json(err);
+          }
      }
 };
