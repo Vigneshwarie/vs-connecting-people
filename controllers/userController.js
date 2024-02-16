@@ -1,5 +1,6 @@
 const { User, Thought } = require('../models');
 
+
 module.exports = {
      // block to get all users
      async getAllUsers(req, res) {
@@ -72,5 +73,25 @@ module.exports = {
                console.log("Error in deleting a user==", err);
                res.status(500).json(err);
           }
-     } 
+     },
+     
+     // Code block to a new friend to the user
+     //api/users/:id/friends/:friendId
+     async addFriendToUserById(req, res) {
+          try {
+               const userData = await User.findByIdAndUpdate(
+                    { _id: req.params.id },
+                    { $set: { friends: req.params.friendId } },
+                    { runValidators: true, new: true }
+               );
+
+               if (!userData) {
+                    return res.status(404).json({ message: 'No user found with this id!' });
+               }
+
+               res.status(200).json(userData);       
+          } catch (err) {
+               console.log("Error in adding a friend to the user==", err);
+          }
+     }
 };
