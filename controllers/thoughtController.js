@@ -46,12 +46,12 @@ module.exports = {
           }
      },
 
-     // code block to update a thought by id for new reaction
+     // code block to update a thought by id
      async updateThoughtById(req, res) {
           try {
                const thoughtData = await Thought.findOneAndUpdate(
                     { _id: req.params.id },
-                    { $addToSet: { reactions: req.body } },
+                    { $set: req.body },
                     { runValidators: true, new: true }
                );
                if (!thoughtData) {
