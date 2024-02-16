@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // Importing all the method from the userController
-const { getAllUsers, getUserById, createUser, updateUserById, deleteUserById, addFriendToUserById } = require('../../controllers/userController');
+const { getAllUsers, getUserById, createUser, updateUserById, deleteUserById, addFriendToUserById, deleteFriendForUserById } = require('../../controllers/userController');
 
 try {
      // This route is to get all the users
@@ -11,7 +11,7 @@ try {
 
      // This route is for friends
      //api/users/:id/friends/:friendId
-     router.route('/:id/friends/:friendId').post(addFriendToUserById);
+     router.route('/:id/friends/:friendId').post(addFriendToUserById).delete(deleteFriendForUserById);
 } catch (err) {
      console.log("Error in the User Router==", err);
 }

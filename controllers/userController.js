@@ -81,7 +81,7 @@ module.exports = {
           try {
                const userData = await User.findByIdAndUpdate(
                     { _id: req.params.id },
-                    { $set: { friends: req.params.friendId } },
+                    { $addToSet: { friends: req.params.friendId } },
                     { runValidators: true, new: true }
                );
 
@@ -92,6 +92,28 @@ module.exports = {
                res.status(200).json(userData);       
           } catch (err) {
                console.log("Error in adding a friend to the user==", err);
+               res.status(500).json(err);
+          }
+     },
+
+     // Code block to delete a friend for a user
+     async deleteFriendForUserById(req, res) {
+          try {
+               const friendData = await User.findByIdAndUpdate(
+                    { _id: req.params.id },
+                    { $pull: { friends: req.params.friendId  } },
+                    { runValidators: true, new: true }
+               ); 
+
+               if (!friendData) {
+                    return res.status(404).json({ message: 'No friend found with this id!' });
+               }
+
+               res.status(200).json(friendData);       
+               
+          } catch (err) {
+               console.log("Error in deleting a friend==", err);
+               res.status(500).json(err);
           }
      }
 };
