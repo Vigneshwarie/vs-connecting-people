@@ -97,6 +97,26 @@ module.exports = {
                console.log(err);
                res.status(500).json(err);
           }
-     }
+     },
 
+     // Code block to delete a particular reaction to a thought
+     async deleteReactionById(req, res) {
+          try {
+               const reactionData = await Thought.findOneAndUpdate(
+                    { _id: req.params.id },
+                    { $pull: { reactions: { reactionId: req.params.reactionId } } },
+                    { runValidators: true, new: true }
+               );
+
+               if (!reactionData) {
+                    return res.status(404).json({ message: 'No reaction found with this id!' });
+               }
+
+               res.status(200).json(reactionData);  
+               
+          } catch (err) {
+               console.log("Error in deleting reaction==", err);
+               res.status(500).json(err);
+          }
+     }
 };
