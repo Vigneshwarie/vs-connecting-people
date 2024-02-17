@@ -64,6 +64,10 @@ Upon successful API execution, the application shall display the data below.
 
 ![alt text](public/images/deleteThought.png)
 
+## Walkthrough Video
+
+[![Watch the video](public/images/getAllUsers.png)](https://drive.google.com/file/d/1ngAcicVSjAXbWafP-5Xi8tnoguw9sRpv/view?usp=share_link)
+
 ## Credits
 
 The links below helped me understand the issues during development.
