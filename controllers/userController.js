@@ -3,9 +3,11 @@ const { User, Thought } = require('../models');
 
 module.exports = {
      // block to get all users
+     // Referred the below link for fetch data for thoughts
+     // https://stackoverflow.com/questions/26818071/mongoose-schema-hasnt-been-registered-for-model
      async getAllUsers(req, res) {
           try {
-               const userData = await User.find();
+               const userData = await User.find().populate({path:'thoughts', model:Thought});
                res.status(200).json(userData);
           } catch (err) {
                console.log("Error in fetching all users data==", err);
@@ -16,7 +18,7 @@ module.exports = {
      // block to get a single user by id
      async getUserById(req, res) {
           try {
-               const userData = await User.findOne({ _id: req.params.id });
+               const userData = await User.findOne({ _id: req.params.id }).populate({path: 'thoughts', model: Thought});
                if (!userData) {
                     res.status(404).json({ message: 'No user found with this id!' });
                     return;
