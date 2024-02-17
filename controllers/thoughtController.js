@@ -7,7 +7,7 @@ module.exports = {
                const thoughtData = await Thought.find();
                res.status(200).json(thoughtData);
           } catch (err) {
-               console.log(err);
+               console.log("Error in fetching all thoughts==", err);
                res.status(500).json(err);
           }
      },
@@ -22,7 +22,7 @@ module.exports = {
                }
                res.status(200).json(thoughtData);
           } catch (err) {
-               console.log(err);
+               console.log("Error in fetching thought by Id==", err);
                res.status(500).json(err);
           }
      },
@@ -32,6 +32,7 @@ module.exports = {
           try {
                const thoughtData = await Thought.create(req.body);
 
+               // The below block update the thought id to the user model
                if (thoughtData) {
                     const userData = await User.findByIdAndUpdate(
                          { _id: req.body.userId },
@@ -41,7 +42,7 @@ module.exports = {
                }
                res.status(200).json(thoughtData);
           } catch (err) {
-               console.log(err);
+               console.log("Error in creating a new thought==", err);
                res.status(500).json(err);
           }
      },
@@ -60,7 +61,7 @@ module.exports = {
                res.status(200).json(thoughtData);
                
           } catch (err) {
-               console.log(err);
+               console.log("Error in updating a thought by Id==", err);
                res.status(500).json(err);
           }
      },
@@ -75,7 +76,7 @@ module.exports = {
                }              
                res.status(200).json({ message: 'Thought deleted successfully!' });
           } catch (err) {
-               console.log(err);
+               console.log("Error in deleting a thought by Id==", err);
                res.status(500).json(err);
           }
      },
@@ -94,7 +95,7 @@ module.exports = {
                res.status(200).json(thoughtData);
                
           } catch (err) {
-               console.log(err);
+               console.log("Error in adding a reaction to a thought==", err);
                res.status(500).json(err);
           }
      },
@@ -115,7 +116,7 @@ module.exports = {
                res.status(200).json(reactionData);  
                
           } catch (err) {
-               console.log("Error in deleting reaction==", err);
+               console.log("Error in deleting a reaction==", err);
                res.status(500).json(err);
           }
      }
