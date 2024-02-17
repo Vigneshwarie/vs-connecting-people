@@ -71,6 +71,12 @@ module.exports = {
           try {
                const thoughtData = await Thought.findOneAndDelete({ _id: req.params.id });
 
+               const userData = await User.findByIdAndUpdate(
+                    { _id: req.body.userId },
+                    { $pull: { thoughts: req.params.id } },
+                    {runValidators: true, new:true }
+               );
+
                if (!thoughtData) {
                     return res.status(404).json({ message: 'No thought found with this id!' });
                }              
