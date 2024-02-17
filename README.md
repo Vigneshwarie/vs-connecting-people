@@ -28,6 +28,8 @@ On successful installation and execution, the application will run successfully 
 
 Upon successful API execution, the application shall display the data below.
 
+### User APIs
+
 ![alt text](public/images/getAllUsers.png)
 
 ![alt text](public/images/getUserById.png)
@@ -43,6 +45,24 @@ Upon successful API execution, the application shall display the data below.
 ![alt text](public/images/deleteFriendForUser.png)
 
 ![alt text](public/images/deleteUser.png)
+
+### Thoughts APIs
+
+![alt text](public/images/getAllThoughts.png)
+
+![alt text](public/images/getThoughtById.png)
+
+![alt text](public/images/createThought.png)
+
+![alt text](public/images/updateThought.png)
+
+![alt text](public/images/addReaction.png)
+
+![alt text](public/images/addedTwomoreReaction.png)
+
+![alt text](public/images/deletedOneReaction.png)
+
+![alt text](public/images/deleteThought.png)
 
 ## Credits
 
