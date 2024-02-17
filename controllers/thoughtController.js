@@ -36,7 +36,7 @@ module.exports = {
                if (thoughtData) {
                     const userData = await User.findByIdAndUpdate(
                          { _id: req.body.userId },
-                         { $set: { thoughts: thoughtData._id } },
+                         { $addToSet: { thoughts: thoughtData._id } },
                          {runValidators: true, new:true }
                     );
                }
