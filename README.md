@@ -66,7 +66,7 @@ Upon successful API execution, the application shall display the data below.
 
 ## Walkthrough Video
 
-[![Watch the video](public/images/getAllUsers.png)](https://drive.google.com/file/d/1ngAcicVSjAXbWafP-5Xi8tnoguw9sRpv/view?usp=share_link)
+[![Watch the video](public/images/getAllUsers.png)](https://drive.google.com/file/d/1mrnqIdCgUgS-YSU2Z1-cdJ4Lzj6MzAu-/view?usp=sharing)
 
 ## Credits
 
